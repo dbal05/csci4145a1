@@ -6,25 +6,20 @@
  */
 
 module.exports = {
-    // calculatebmi889:function(req, res) {
-    //     res.view('pages/bmi');
-    // },
-    calculate:function(req, res) {
+    calculateBMI889:function(req, res) {
         var height = parseFloat(req.body.height);
         var weight = parseFloat(req.body.weight);
-        var body = req.body.body;
 
         if (!height) {
-            return res.badRequest();
+            return res.badRequest('Please enter Height');
         } else if (!weight) {
-            return res.badRequest();
+            return res.badRequest('Please enter Weight');
         } else {
             var bmi = weight/(height*height);
             bmi = Math.round(bmi, 2);
-            return res.view('pages/bmi', {bmi: bmi})
-            // res.redirect('/bmi889/calculatebmi889');
+            // res.view('pages/bmi', {bmi: bmi});
+            return res.json({bmi: bmi});
         }
-
     }
 };
 

@@ -21,9 +21,7 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
 
-  'GET /bmi889/calculatebmi889': 'Bmi889Controller.calculatebmi889',
-  'POST /bmi889/calculate': 'Bmi889Controller.calculate'
-  // 'POST /calculateBMI889': 'ClientsController.make'
+  'POST /bmi889/calculateBMI889': 'Bmi889Controller.calculateBMI889'
 
   /***************************************************************************
   *                                                                          *

@@ -1,14 +1,44 @@
 <h1 class="display-4">Assignment 1</h1>
 <h3>Calculate BMI Index</h3>
 
-<form method="post" action="/bmi889/calculate">
-  <div class="form-group">
-    <label for="height">Height</label>
-    <input type="string" name="height" class="form-control">
+<div class="form-group">
+    <label for="height">Height (In Meters)</label>
+    <input id="height" type="string" name="height" class="form-control" required>
   </div>
   <div class="form-group">
-      <label for="weight">Weight</label>
-      <input type="string" name="weight" class="form-control">
+      <label for="weight">Weight (In Kilograms)</label>
+      <input id="weight" type="string" name="weight" class="form-control" required>
   </div>
-  <input type="submit" value="Submit" class="btn btn-primary">
-</form>
+  <input onclick="return getBMI();" type="submit" value="Submit" class="btn btn-primary" required>
+
+<br><br>
+<div id=bmi></div>
+
+<script type="text/javascript">
+  function getBMI() {
+    var height = document.getElementById("height").value;
+    var weight = document.getElementById("weight").value;
+    if (!height) {
+      alert('Please enter height');
+    }
+    if (!weight) {
+      alert('Please enter weight');
+    }
+    if (height && weight) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          data = JSON.parse(this.responseText);
+          document.getElementById("bmi").innerHTML = "Your BMI is: " + data.bmi;
+        } else {
+          document.getElementById("bmi").innerHTML = "Please Enter Valid Info"; 
+        }
+      };
+      
+      var param = "height=" + height + "&weight=" + weight;
+      xhttp.open("POST", "/bmi889/calculateBMI889", true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send(param);
+    }
+  }
+</script>

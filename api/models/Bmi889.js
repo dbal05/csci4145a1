@@ -17,6 +17,9 @@ module.exports = {
     },
     weight: {
       type: 'string'
+    },
+    bmi: {
+      type: 'number'
     }
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
