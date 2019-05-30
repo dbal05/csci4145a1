@@ -23,3 +23,14 @@ module.exports = {
     }
 };
 
+/* Useful docker commands:
+docker build -t back-end .
+docker run -it --rm -p 1337:1337 back-end
+
+docker login
+docker tag back-end dahnbalan/back-end
+docker push dahnbalan/back-end
+
+docker images
+*/
+
